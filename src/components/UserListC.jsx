@@ -17,7 +17,24 @@ const UserListC = () => {
 
   console.log(state);
 
-  return <div>User</div>;
+  return (
+    <div>
+      {state.isLoading ? (
+        <h1>Yükleniyor</h1>
+      ) : state.error ? (
+        <h1>{state.error}</h1>
+      ) : (
+        state.users.map((user) => (
+          <div>
+            <img src={user.image} />
+            <h2>
+              {user.firstName} {user.lastName}
+            </h2>
+          </div>
+        ))
+      )}
+    </div>
+  );
 };
 
 export default UserListC;
