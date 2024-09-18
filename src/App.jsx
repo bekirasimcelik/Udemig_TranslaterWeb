@@ -34,7 +34,7 @@ const App = () => {
         />
 
         {/* TEXT PART */}
-        <TextContainer />
+        <TextContainer setText={setText} text={text} />
 
         {/* BUTTONS */}
         <button className="px-5 py-3 rounded-md font-semibold hover:ring-2 hover:bg-zinc-900 cursor-pointer transition mt-3 disabled:brightness-50">
