@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import LanguageSelect from "../../components/LanguageSelect";
+import getLangs from "../actions";
 
 const initialState = {
   isLoading: true,
@@ -7,11 +7,26 @@ const initialState = {
   langs: [],
 };
 
-const lLnguageSlice = createSlice({
+const languageSlice = createSlice({
   name: "lang",
   initialState,
   reducers: [],
-  extraReducers: () => {},
+  extraReducers: (builder) => {
+    builder.addCase(getLangs.pending, (state) => {
+      state.isLoading = true;
+    });
+
+    builder.addCase(getLangs.rejected, (state, { error }) => {
+      state.isLoading = false;
+      state.error = error.message;
+    });
+
+    builder.addCase(getLangs.fulfilled, (state, { payload }) => {
+      state.isLoading = false;
+      state.error = null;
+      state.langs = payload;
+    });
+  },
 });
 
-export default LanguageSelect.reducer;
+export default languageSlice.reducer;

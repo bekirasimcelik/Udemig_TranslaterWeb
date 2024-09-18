@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LanguageSelect from "./components/LanguageSelect";
 import TextContainer from "./components/TextContainer";
+import { useDispatch } from "react-redux";
+import getLangs from "./redux/actions";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getLangs());
+  }, []);
+
   return (
     <div className="bg-zinc-900 h-screen text-white grid place-items-center">
       <div className="w-[80vw] max-w-[1100px] flex flex-col justify-center">
