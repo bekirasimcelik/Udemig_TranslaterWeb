@@ -20,6 +20,8 @@ const App = () => {
     dispatch(getLangs());
   }, []);
 
+  const handlerTranslate = () => {};
+
   return (
     <div className="bg-zinc-900 h-screen text-white grid place-items-center">
       <div className="w-[80vw] max-w-[1100px] flex flex-col justify-center">
@@ -37,7 +39,10 @@ const App = () => {
         <TextContainer setText={setText} text={text} />
 
         {/* BUTTONS */}
-        <button className="px-5 py-3 rounded-md font-semibold hover:ring-2 hover:bg-zinc-900 cursor-pointer transition mt-3 disabled:brightness-50">
+        <button
+          onClick={handlerTranslate}
+          className="px-5 py-3 rounded-md font-semibold hover:ring-2 hover:bg-zinc-900 cursor-pointer transition mt-3 disabled:brightness-50"
+        >
           SWITCH
         </button>
       </div>

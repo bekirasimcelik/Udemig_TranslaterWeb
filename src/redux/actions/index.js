@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import api from "../api";
+import api from "../api/index";
 
-const getLangs = createAsyncThunk("lang/getLanguages", async () => {
+export const getLangs = createAsyncThunk("lang/getLanguages", async () => {
   // API request
   const res = await api.get("/getLanguages");
 
@@ -9,4 +9,7 @@ const getLangs = createAsyncThunk("lang/getLanguages", async () => {
   return res.data.data.languages;
 });
 
-export default getLangs;
+export const translateText = createAsyncThunk(
+  "translate/translateText",
+  async (params) => {}
+);
