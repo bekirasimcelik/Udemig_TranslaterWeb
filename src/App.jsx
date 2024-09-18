@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LanguageSelect from "./components/LanguageSelect";
 import TextContainer from "./components/TextContainer";
 import { useDispatch } from "react-redux";
@@ -6,6 +6,15 @@ import getLangs from "./redux/actions";
 
 const App = () => {
   const dispatch = useDispatch();
+  const [sourceLang, setSourceLang] = useState({
+    label: "Turkish",
+    value: "tr",
+  });
+  const [targetLang, setTargetLang] = useState({
+    label: "English",
+    value: "en",
+  });
+  const [text, setText] = useState();
 
   useEffect(() => {
     dispatch(getLangs());
@@ -17,7 +26,12 @@ const App = () => {
         <h1 className="text-center text-4xl font-semibold mb-7">Çeviri +</h1>
 
         {/* TOP PART */}
-        <LanguageSelect />
+        <LanguageSelect
+          sourceLang={sourceLang}
+          targetLang={targetLang}
+          setSourceLang={setSourceLang}
+          setTargetLang={setTargetLang}
+        />
 
         {/* TEXT PART */}
         <TextContainer />
