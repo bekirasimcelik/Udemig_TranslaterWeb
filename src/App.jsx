@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import LanguageSelect from "./components/LanguageSelect";
 import TextContainer from "./components/TextContainer";
-import { useDispatch } from "react-redux";
-import getLangs from "./redux/actions";
+import { useEffect, useState } from "react";
+import { getLangs } from "./redux/actions";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,14 +20,14 @@ const App = () => {
     dispatch(getLangs());
   }, []);
 
-  const handlerTranslate = () => {};
+  console.log(sourceLang);
 
   return (
     <div className="bg-zinc-900 h-screen text-white grid place-items-center">
       <div className="w-[80vw] max-w-[1100px] flex flex-col justify-center">
-        <h1 className="text-center text-4xl font-semibold mb-7">Çeviri +</h1>
+        <h1 className="text-center text-4xl font-semibold mb-7">Translate +</h1>
 
-        {/* TOP PART */}
+        {/* Top Area */}
         <LanguageSelect
           sourceLang={sourceLang}
           targetLang={targetLang}
@@ -35,15 +35,12 @@ const App = () => {
           setTargetLang={setTargetLang}
         />
 
-        {/* TEXT PART */}
-        <TextContainer setText={setText} text={text} />
+        {/* Text Area */}
+        <TextContainer />
 
-        {/* BUTTONS */}
-        <button
-          onClick={handlerTranslate}
-          className="px-5 py-3 rounded-md font-semibold hover:ring-2 hover:bg-zinc-900 cursor-pointer transition mt-3 disabled:brightness-50"
-        >
-          SWITCH
+        {/* Button Area */}
+        <button className="bg-zinc-700 px-5 py-3 rounded-md font-semibold hover:ring-2 hover:bg-zinc-900 cursor-pointer transition mt-3 disabled:brightness-50">
+          Çevir
         </button>
       </div>
     </div>

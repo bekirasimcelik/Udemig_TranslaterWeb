@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import getLangs from "../actions";
+import { getLangs } from "../actions";
 
 const initialState = {
   isLoading: true,
@@ -10,7 +10,7 @@ const initialState = {
 const languageSlice = createSlice({
   name: "lang",
   initialState,
-  reducers: [],
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getLangs.pending, (state) => {
       state.isLoading = true;
